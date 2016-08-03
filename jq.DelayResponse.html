@@ -1,26 +1,31 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>
-  $(document).ready(function(){
-  
-  	$('input[type=text]').keyup(function(){
-      var innerThis = this;
-  		applyTimeout($(this), function() {
-      	$('#result').html($(innerThis).val());
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+      
+        $('input[type=text]').keyup(function(){
+          var innerThis = this;
+            applyTimeout($(this), function() {
+            $('#result').html($(innerThis).val());
+          });
+        });
       });
-  	});
-  });
-  
-  function applyTimeout(obj, funct) {
-  	if(typeof obj.data("keyTimer") !== "undefined") {
-  		clearInterval(obj.data("keyTimer"));
-    }
-  	obj.data("keyTimer", setTimeout(funct, 1000));
-  }
-</script>
-
-<label>Text A: <input type="text"></label>
-<br />
-<label>Text B: <input type="text"></label>
-<br />
-<div id="result" style="width:80%; margin:8px; padding:3px; border:1px solid black;">
-</div>
+      
+      function applyTimeout(obj, funct) {
+        if(typeof obj.data("keyTimer") !== "undefined") {
+            clearInterval(obj.data("keyTimer"));
+        }
+        obj.data("keyTimer", setTimeout(funct, 1000));
+      }
+    </script>
+</head>
+<body>
+    <label>Text A: <input type="text"></label>
+    <br />
+    <label>Text B: <input type="text"></label>
+    <br />
+    <div id="result" style="width:80%; margin:8px; padding:3px; border:1px solid black;">
+    </div>
+</body>
+</html>
