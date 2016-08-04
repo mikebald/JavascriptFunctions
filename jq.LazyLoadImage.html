@@ -1,0 +1,25 @@
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("img[lazy_load]").each(function() {
+            var highRes = $(this).attr("lazy_load"),
+                innerThis = $(this),
+              img = new Image();
+            $(img).attr('src', highRes).css("display", "none").appendTo("body").load(function() {
+              // timeout to show off the effect
+              setTimeout(function(){
+                innerThis.attr('src', highRes);
+                console.log("done");
+              }, 5000);
+            });
+            
+          });
+        });
+    </script>
+</head>
+<body>
+    <img src="http://mikebald.com/images/low_res.jpg" lazy_load="http://mikebald.com/images/high_res.jpg" />
+</body>
+</html>
