@@ -1,0 +1,39 @@
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+    var getUrlParameters = function() {
+        var PageURL = decodeURIComponent(window.location.search.substring(1)), // Remove the ?
+            URLVariables = PageURL.split('&'), // Split parameters by &
+            Parameters = {};
+
+        URLVariables.forEach(function(value) {
+            value = value.split('=');
+            Parameters[value[0]] = value[1];
+        });
+        return Parameters;
+    };
+
+    var getUrlParameter = function(param) {
+            var PageURL = decodeURIComponent(window.location.search.substring(1)), // Remove the ?
+            URLVariables = PageURL.split('&'), // Split parameters by &
+            ParameterName;
+        
+        URLVariables.forEach(function(value) {
+            value = value.split('=');
+            if(value[0] == param) {
+                ParameterName = value[1];
+            }
+        });
+        return ParameterName;
+    };
+    </script>
+</head>
+<body>
+    <div id="result" style="width:80%; margin:8px; padding:3px; border:1px solid black;">
+    </div>
+    <script>
+        document.getElementById("result").innerHTML = JSON.stringify(getUrlParameters());
+    </script>
+</body>
+</html>
